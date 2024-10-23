@@ -743,14 +743,25 @@ works = [
   "welders",
 ];
 states = [
-  "lagos",
+  "anambra",
+  "benue",
+  "borno",
+  "enugu",
+  "kaduna",
   "kano",
+  "katsina",
+  "lagos",
   "oyo",
   "rivers",
-  "kaduna",
-  "katsina",
-  "anambra",
-  "borno",
-  "benue",
-  "enugu",
 ];
+
+const byState = document.getElementById("byState");
+for (let i = 0; i < states.length; i++) {
+  addState(byState, states[i]);
+}
+
+function addState(parent, item) {
+  const newList = document.createElement("li");
+  newList.innerHTML = `<li><a href="about.html">${item.toUpperCase()}</a></li>`;
+  parent.appendChild(newList);
+}
