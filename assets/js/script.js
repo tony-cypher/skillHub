@@ -760,6 +760,11 @@ for (let i = 0; i < states.length; i++) {
   addState(byState, states[i]);
 }
 
+const bySkill = document.getElementById("bySkill");
+for (let i = 0; i < works.length; i++) {
+  addState(bySkill, works[i]);
+}
+
 function addState(parent, item) {
   const newList = document.createElement("li");
   newList.innerHTML = `<li><a href="about.html">${item.toUpperCase()}</a></li>`;
