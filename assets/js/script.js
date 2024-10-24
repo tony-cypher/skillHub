@@ -755,18 +755,20 @@ states = [
   "rivers",
 ];
 
-const byState = document.getElementById("byState");
-for (let i = 0; i < states.length; i++) {
-  addState(byState, states[i]);
-}
+const tbody = document.getElementById("tbody");
 
-const bySkill = document.getElementById("bySkill");
-for (let i = 0; i < works.length; i++) {
-  addState(bySkill, works[i]);
-}
-
-function addState(parent, item) {
-  const newList = document.createElement("li");
-  newList.innerHTML = `<li><a href="about.html">${item.toUpperCase()}</a></li>`;
-  parent.appendChild(newList);
+var num = 0;
+for (let i = 0; i < data.length; i++) {
+  if (data[i].rating > 9.6) {
+    num += 1;
+    var newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <th scope="row">${num}</th>
+      <td>${data[i].name.split(" ")[1]}</td>
+      <td>${data[i].work}</td>
+      <td>${data[i].city}</td>
+      <td>${data[i].rating}</td>
+    `;
+    tbody.appendChild(newRow);
+  }
 }
