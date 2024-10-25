@@ -86,41 +86,125 @@
                   <th scope="col">Work</th>
                   <th scope="col">City</th>
                   <th scope="col">Rating</th>
+                  <th scope="col">More..</th>
                 </tr>
               </thead>
               <tbody id="tbody">
+                <tr>
+                  <th scope="row">1.</th>
+                  <td>Oladipo</td>
+                  <td>Welder</td>
+                  <td>Kano</td>
+                  <td>9.8</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="7"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2.</th>
+                  <td>Onuorah</td>
+                  <td>Electrician</td>
+                  <td>Lekki</td>
+                  <td>9.9</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="56"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">3.</th>
+                  <td>Olanrewaju</td>
+                  <td>Automobile Mechanic</td>
+                  <td>Zaria</td>
+                  <td>9.8</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="64"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">4.</th>
+                  <td>Adeboye</td>
+                  <td>Shoe/Bag Designer</td>
+                  <td>Enugu</td>
+                  <td>9.8</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="65"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.</th>
+                  <td>Adekunle</td>
+                  <td>Welder</td>
+                  <td>Nsukka</td>
+                  <td>9.9</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="71"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">6.</th>
+                  <td>Okafor</td>
+                  <td>Vulcanizes</td>
+                  <td>Maiduguri</td>
+                  <td>9.9</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="114"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">7.</th>
+                  <td>Akintola</td>
+                  <td>Automobile Mechanic</td>
+                  <td>Awka</td>
+                  <td>9.8</td>
+                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="119"></a></td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="row gy-4">
-
-          <div class="col-lg-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
-              data-aos-delay="200">
-              <i class="bi bi-geo-alt"></i>
-              <h3>Address</h3>
-              <p>LM Tech Hub, 3MTT, Anambra State</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
-              data-aos-delay="300">
-              <i class="bi bi-telephone"></i>
-              <h3>Call Us</h3>
-              <p>+234 810 XXXX XXX</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
+        <div id="detail" class="row gy-4">
+          <div class="col-lg-4 col-md-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
               data-aos-delay="400">
-              <i class="bi bi-envelope"></i>
-              <h3>Email Us</h3>
-              <p>buildwithfellow@email.com</p>
+              <i class="bi bi-person-fill"></i>
+              <h3>Name</h3>
+              <p id="id_name"></p>
             </div>
           </div><!-- End Info Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="400">
+              <i class="bi bi-gear-wide-connected"></i>
+              <h3>Painter</h3>
+              <p id="id_work"></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="200">
+              <i class="bi bi-geo-alt-fill"></i>
+              <h3>Location</h3>
+              <p id="id_loc"></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="300">
+              <i class="bi bi-telephone-fill"></i>
+              <h3>Phone</h3>
+              <p id="id_phone"></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="400">
+              <i class="bi bi-envelope-fill"></i>
+              <h3>Email</h3>
+              <p id="id_email"></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="400">
+              <i class="bi bi-star-fill"></i>
+              <h3>Rating / Services</h3>
+              <p id="id_rate"></p>
+            </div>
+          </div><!-- End Info Item -->
+
 
         </div>
 
@@ -130,7 +214,7 @@
           </div><!-- End Google Maps -->
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="email-form" data-aos="fade-up" data-aos-delay="400">
+            <form action="" method="post" class="email-form" data-aos="fade-up" data-aos-delay="400">
               <div class="row gy-4">
 
                 <div class="col-md-6">
