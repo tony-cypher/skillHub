@@ -156,3 +156,46 @@
    */
   new PureCounter();
 })();
+if (JSON.parse(localStorage.getItem("userList")) === null) {
+  var user = {
+    full_name: "Anthony Admin",
+    email: "admin@gmail.com",
+    role: "Client",
+    password: "admin12345",
+  };
+  addUserToLocalStorage(user, false, "");
+}
+
+checkLogin();
+
+function checkLogin() {
+  var nav = document.getElementById("nav-ul");
+  var userList = JSON.parse(localStorage.getItem("userList"));
+  const userEmail = localStorage.getItem("user");
+  var emailExists = userList.some(
+    (existingUser) => existingUser.email === userEmail
+  );
+  if (!emailExists) {
+    console.log("not exists");
+    const login = document.createElement("li");
+    login.innerHTML = `<a href="login.html">Login</a>`;
+    const register = document.createElement("li");
+    register.innerHTML = `<a href="register.html">Register</a>`;
+    nav.appendChild(login);
+    nav.appendChild(register);
+  } else {
+    var logged = document.createElement("li");
+    logged.innerHTML = `
+    <a href="">Logout</a>
+    `;
+    nav.appendChild(logged);
+  }
+}
+
+function addUserToLocalStorage(newUser, login, email) {
+  var userList = JSON.parse(localStorage.getItem("userList")) || [];
+  userList.push(newUser);
+  localStorage.setItem("userList", JSON.stringify(userList));
+  localStorage.setItem("user", email);
+  localStorage.setItem("login", login);
+}

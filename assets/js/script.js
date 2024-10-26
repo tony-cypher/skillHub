@@ -1492,3 +1492,46 @@ document.querySelectorAll(".ids").forEach((button) => {
     ).textContent = `${info.rating}, ${info.duration}`;
   });
 });
+
+if (JSON.parse(localStorage.getItem("userList")) === null) {
+  var user = {
+    full_name: "Anthony Admin",
+    email: "admin@gmail.com",
+    role: "Client",
+    password: "admin12345",
+  };
+  addUserToLocalStorage(user, false, "");
+}
+
+checkLogin();
+
+function checkLogin() {
+  var nav = document.getElementById("nav-ul");
+  var userList = JSON.parse(localStorage.getItem("userList"));
+  const userEmail = localStorage.getItem("user");
+  var emailExists = userList.some(
+    (existingUser) => existingUser.email === userEmail
+  );
+  if (!emailExists) {
+    console.log("not exists");
+    var login = `
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Register</a></li>
+    `;
+    nav.appendChild(login);
+  } else {
+    var logged = document.createElement("li");
+    logged.innerHTML = `
+    <a href="">Logout</a>
+    `;
+    nav.appendChild(logged);
+  }
+}
+
+function addUserToLocalStorage(newUser, login, email) {
+  var userList = JSON.parse(localStorage.getItem("userList")) || [];
+  userList.push(newUser);
+  localStorage.setItem("userList", JSON.stringify(userList));
+  localStorage.setItem("user", email);
+  localStorage.setItem("login", login);
+}

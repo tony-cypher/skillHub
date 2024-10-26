@@ -5,7 +5,7 @@ if (JSON.parse(localStorage.getItem("userList")) === null) {
     role: "Client",
     password: "admin12345",
   };
-  addUserToLocalStorage(user);
+  addUserToLocalStorage(user, false, "");
 }
 const loginForm = document.getElementById("userForm");
 
@@ -61,7 +61,7 @@ function registerValidate() {
         role: document.getElementById("work").value,
         password: password1,
       };
-      addUserToLocalStorage(newData);
+      addUserToLocalStorage(newData, true, newData.email);
       window.location.href = "index.html";
     } else {
       document.getElementById("invalid").innerHTML = `
@@ -79,8 +79,10 @@ function registerValidate() {
   }
 }
 
-function addUserToLocalStorage(newUser) {
+function addUserToLocalStorage(newUser, login, email) {
   var userList = JSON.parse(localStorage.getItem("userList")) || [];
   userList.push(newUser);
   localStorage.setItem("userList", JSON.stringify(userList));
+  localStorage.setItem("user", email);
+  localStorage.setItem("login", login);
 }
