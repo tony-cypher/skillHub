@@ -33,6 +33,7 @@ function loginValidate() {
   console.log(emailExists, passwordExists);
 
   if (emailExists && passwordExists) {
+    addUserToLocalStorage({}, true, email);
     window.location.href = "index.html";
   } else {
     document.getElementById("invalid").innerHTML = `
@@ -80,9 +81,17 @@ function registerValidate() {
 }
 
 function addUserToLocalStorage(newUser, login, email) {
+  // gets the list of users
   var userList = JSON.parse(localStorage.getItem("userList")) || [];
-  userList.push(newUser);
+
+  // checks if email exists in the userList
+  var emailExists = userList.some(
+    (existingUser) => existingUser.email === email
+  );
+  if (!emailExists) {
+    userList.push(newUser);
+  }
   localStorage.setItem("userList", JSON.stringify(userList));
   localStorage.setItem("user", email);
-  localStorage.setItem("login", login);
+  localStorage.setItem("login", JSON.stringify(login));
 }

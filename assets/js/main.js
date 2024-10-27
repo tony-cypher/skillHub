@@ -164,6 +164,7 @@ if (JSON.parse(localStorage.getItem("userList")) === null) {
     password: "admin12345",
   };
   addUserToLocalStorage(user, false, "");
+  console.log("new user");
 }
 
 checkLogin();
@@ -171,11 +172,12 @@ checkLogin();
 function checkLogin() {
   var nav = document.getElementById("nav-ul");
   var userList = JSON.parse(localStorage.getItem("userList"));
-  const userEmail = localStorage.getItem("user");
-  var emailExists = userList.some(
-    (existingUser) => existingUser.email === userEmail
-  );
-  if (!emailExists) {
+  const userLogin = JSON.parse(localStorage.getItem("login"));
+  console.log(userLogin);
+  // var emailExists = userList.some(
+  //   (existingUser) => existingUser.email === userEmail
+  // );
+  if (!userLogin) {
     console.log("not exists");
     const login = document.createElement("li");
     login.innerHTML = `<a href="login.html">Login</a>`;
@@ -184,18 +186,41 @@ function checkLogin() {
     nav.appendChild(login);
     nav.appendChild(register);
   } else {
+    console.log(userLogin + "exists");
     var logged = document.createElement("li");
     logged.innerHTML = `
-    <a href="">Logout</a>
+    <a href="" onclick="logout(event)">Logout</a>
     `;
     nav.appendChild(logged);
   }
 }
 
+function logout(e) {
+  e.preventDefault();
+  console.log("logout clicked");
+  const userList = JSON.parse(localStorage.getItem("userList"));
+  const email = localStorage.getItem("user");
+  for (i = 0; i < userList.length; i++) {
+    if (userList[i].email === email) {
+      var userObject = userList[i];
+    }
+  }
+  addUserToLocalStorage(userObject, false, email);
+  checkLogin();
+}
+
 function addUserToLocalStorage(newUser, login, email) {
+  // gets the list of users
   var userList = JSON.parse(localStorage.getItem("userList")) || [];
-  userList.push(newUser);
+
+  // checks if email exists in the userList
+  var emailExists = userList.some(
+    (existingUser) => existingUser.email === email
+  );
+  if (!emailExists) {
+    userList.push(newUser);
+  }
   localStorage.setItem("userList", JSON.stringify(userList));
   localStorage.setItem("user", email);
-  localStorage.setItem("login", login);
+  localStorage.setItem("login", JSON.stringify(login));
 }
