@@ -32,15 +32,21 @@ function loginValidate() {
   );
   console.log(emailExists, passwordExists);
 
-  if (emailExists && passwordExists) {
-    addUserToLocalStorage({}, true, email);
-    window.location.href = "index.html";
-  } else {
+  if (!emailExists) {
     document.getElementById("invalid").innerHTML = `
            <div class="alert alert-danger text-center role=" alert">
-               Invalid Credentials
+               Email does not exist, Register
            </div>
            `;
+  } else if (!passwordExists) {
+    document.getElementById("invalid").innerHTML = `
+           <div class="alert alert-danger text-center role=" alert">
+               Incorrect Password !
+           </div>
+           `;
+  } else {
+    addUserToLocalStorage({}, true, email);
+    window.location.href = "index.html";
   }
 }
 

@@ -206,7 +206,7 @@ function logout(e) {
     }
   }
   addUserToLocalStorage(userObject, false, email);
-  checkLogin();
+  window.location.href = "index.html";
 }
 
 function addUserToLocalStorage(newUser, login, email) {
