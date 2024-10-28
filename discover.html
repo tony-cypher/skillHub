@@ -79,77 +79,85 @@
         <div class="row gy-4 mb-5">
           <div>
             <h3 class="text-center">Most rated Artisans</h3>
-            <table class="table mt-4">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Skill</th>
-                  <!-- <th scope="col">City</th> -->
-                  <th scope="col">Rating</th>
-                  <th scope="col">More..</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-                <tr>
-                  <th scope="row">1.</th>
-                  <td>Oladipo</td>
-                  <td>Welder</td>
-                  <!-- <td>Kano</td> -->
-                  <td>9.8</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="7"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">2.</th>
-                  <td>Onuorah</td>
-                  <td>Electrician</td>
-                  <!-- <td>Lekki</td> -->
-                  <td>9.9</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="56"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3.</th>
-                  <td>Olanrewaju</td>
-                  <td>Automobile Mechanic</td>
-                  <!-- <td>Zaria</td> -->
-                  <td>9.8</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="64"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">4.</th>
-                  <td>Adeboye</td>
-                  <td>Shoe/Bag Designer</td>
-                  <!-- <td>Enugu</td> -->
-                  <td>9.8</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="65"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">5.</th>
-                  <td>Adekunle</td>
-                  <td>Welder</td>
-                  <!-- <td>Nsukka</td> -->
-                  <td>9.9</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="71"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">6.</th>
-                  <td>Okafor</td>
-                  <td>Vulcanizer</td>
-                  <!-- <td>Maiduguri</td> -->
-                  <td>9.9</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="114"></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">7.</th>
-                  <td>Akintola</td>
-                  <td>Automobile Mechanic</td>
-                  <!-- <td>Awka</td> -->
-                  <td>9.8</td>
-                  <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="119"></a></td>
-                </tr>
-              </tbody>
-            </table>
+
+            <form action="" class="mt-3">
+              <div class="d-flex">
+                <input class="form-control mx-3 ms-auto" type="text" id="search-input" style="width: 18rem;"
+                  placeholder="Find Artisan (Plumber)">
+                <a class="btn btn-success" id="search" onclick="findArtisan()"><i class="bi bi-search"></i></a>
+              </div>
+            </form>
           </div>
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Skill</th>
+                <!-- <th scope="col">City</th> -->
+                <th scope="col">Rating</th>
+                <th scope="col">More..</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <th scope="row">1.</th>
+                <td>Oladipo</td>
+                <td>Welder</td>
+                <!-- <td>Kano</td> -->
+                <td>9.8</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="7"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">2.</th>
+                <td>Onuorah</td>
+                <td>Electrician</td>
+                <!-- <td>Lekki</td> -->
+                <td>9.9</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="56"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">3.</th>
+                <td>Olanrewaju</td>
+                <td>Automobile Mechanic</td>
+                <!-- <td>Zaria</td> -->
+                <td>9.8</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="64"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">4.</th>
+                <td>Adeboye</td>
+                <td>Shoe/Bag Designer</td>
+                <!-- <td>Enugu</td> -->
+                <td>9.8</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="65"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">5.</th>
+                <td>Adekunle</td>
+                <td>Welder</td>
+                <!-- <td>Nsukka</td> -->
+                <td>9.9</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="71"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">6.</th>
+                <td>Okafor</td>
+                <td>Vulcanizer</td>
+                <!-- <td>Maiduguri</td> -->
+                <td>9.9</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="114"></a></td>
+              </tr>
+              <tr>
+                <th scope="row">7.</th>
+                <td>Akintola</td>
+                <td>Automobile Mechanic</td>
+                <!-- <td>Awka</td> -->
+                <td>9.8</td>
+                <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="119"></a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div id="detail" class="row gy-4">
           <div class="col-lg-4 col-md-6">

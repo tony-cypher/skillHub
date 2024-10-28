@@ -156,6 +156,11 @@
    */
   new PureCounter();
 })();
+
+function findArtisan() {
+  const input = document.getElementById("search-input").value;
+  console.log("Find artisan " + input);
+}
 if (JSON.parse(localStorage.getItem("userList")) === null) {
   var user = {
     full_name: "Anthony Admin",
