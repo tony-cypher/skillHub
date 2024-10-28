@@ -182,11 +182,16 @@ function checkLogin() {
     nav.appendChild(login);
     nav.appendChild(register);
   } else {
-    var logged = document.createElement("li");
-    logged.innerHTML = `
+    const logout = document.createElement("li");
+    logout.innerHTML = `
     <a href="" onclick="logout(event)">Logout</a>
     `;
-    nav.appendChild(logged);
+    const discover = document.createElement("li");
+    discover.innerHTML = `
+    <a href="discover.html">Discover</a>
+    `;
+    nav.appendChild(discover);
+    nav.appendChild(logout);
   }
 }
 
