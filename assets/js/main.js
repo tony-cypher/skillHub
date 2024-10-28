@@ -173,10 +173,6 @@ function checkLogin() {
   var nav = document.getElementById("nav-ul");
   var userList = JSON.parse(localStorage.getItem("userList"));
   const userLogin = JSON.parse(localStorage.getItem("login"));
-  console.log(userLogin);
-  // var emailExists = userList.some(
-  //   (existingUser) => existingUser.email === userEmail
-  // );
   if (!userLogin) {
     console.log("not exists");
     const login = document.createElement("li");
@@ -186,7 +182,6 @@ function checkLogin() {
     nav.appendChild(login);
     nav.appendChild(register);
   } else {
-    console.log(userLogin + "exists");
     var logged = document.createElement("li");
     logged.innerHTML = `
     <a href="" onclick="logout(event)">Logout</a>
