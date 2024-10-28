@@ -1264,3 +1264,10 @@ section,
 .forgot {
   color: var(--heading-color);
 }
+
+.see {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

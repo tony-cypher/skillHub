@@ -63,9 +63,13 @@
                                         required="">
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 position-relative">
                                     <input type="password" class="form-control" id="password" placeholder="Password"
                                         required="">
+                                    <div class="input-group-append">
+                                        <i class="bi bi-eye position-absolute see mx-3" id="togglePasswordIcon"
+                                            onclick="passwordToggle()"></i>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12 text-center">

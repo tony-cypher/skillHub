@@ -101,3 +101,29 @@ function addUserToLocalStorage(newUser, login, email) {
   localStorage.setItem("user", email);
   localStorage.setItem("login", JSON.stringify(login));
 }
+
+function confirmPasswordToggle() {
+  const confirmPasswordInput = document.getElementById("confirm_password");
+  const confirmToggleIcon = document.getElementById(
+    "toggleConfirmPasswordIcon"
+  );
+  togglePassword(confirmPasswordInput, confirmToggleIcon);
+}
+
+function passwordToggle() {
+  const passwordInput = document.getElementById("password");
+  const toggleIcon = document.getElementById("togglePasswordIcon");
+  togglePassword(passwordInput, toggleIcon);
+}
+
+function togglePassword(input, icon) {
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("bi-eye");
+    icon.classList.add("bi-eye-slash");
+  } else {
+    input.type = "password";
+    icon.classList.remove("bi-eye-slash");
+    icon.classList.add("bi-eye");
+  }
+}
