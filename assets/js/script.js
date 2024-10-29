@@ -1475,6 +1475,13 @@ const states = [
   "rivers",
 ];
 
+const artisanGroup = document.getElementById("search-input");
+for (i = 0; i < works.length; i++) {
+  var newOption = document.createElement("option");
+  newOption.textContent = works[i];
+  artisanGroup.appendChild(newOption);
+}
+
 document.querySelectorAll(".ids").forEach((button) => {
   button.addEventListener("click", function (e) {
     const clickedElement = e.target.innerHTML;
@@ -1492,3 +1499,8 @@ document.querySelectorAll(".ids").forEach((button) => {
     ).textContent = `${info.rating}, ${info.duration}`;
   });
 });
+
+function findArtisan() {
+  const input = document.getElementById("search-input").value.toLowerCase();
+  console.log(input);
+}
