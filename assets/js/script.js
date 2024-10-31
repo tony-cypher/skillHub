@@ -1450,7 +1450,6 @@ const works = [
   "painter",
   "fashion designers",
   "car wash",
-  "cleaners",
   "beauty salon",
   "makeup artist",
   "laptop/phone repairs",
@@ -1503,4 +1502,27 @@ document.querySelectorAll(".ids").forEach((button) => {
 function findArtisan() {
   const input = document.getElementById("search-input").value.toLowerCase();
   console.log(input);
+  var artisanList = [];
+  for (i = 0; i < data.length; i++) {
+    if (data[i].work == input) {
+      artisanList.push(data[i]);
+    }
+  }
+  console.log(artisanList);
+  const tbody = document.getElementById("tbody");
+  for (i = 0; i < artisanList.length; i++) {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+    <th scope="row">${i + 1}.</th>
+    <td>${artisanList[i].name}</td>
+    <td>${artisanList[i].city}</td>
+    <td>${artisanList[i].rating}</td>
+    <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="7"></a></td>
+  `;
+    tbody.appendChild(newRow);
+  }
+}
+
+function findDetails(e) {
+  console.log(e.target.innerHTML);
 }
