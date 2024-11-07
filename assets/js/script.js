@@ -1501,15 +1501,18 @@ document.querySelectorAll(".ids").forEach((button) => {
 
 function findArtisan() {
   const input = document.getElementById("search-input").value.toLowerCase();
-  console.log(input);
   var artisanList = [];
   for (i = 0; i < data.length; i++) {
     if (data[i].work == input) {
       artisanList.push(data[i]);
     }
   }
-  console.log(artisanList);
   const tbody = document.getElementById("tbody");
+  const title = document.getElementById("artisan-title");
+  const details = document.getElementById("artisan-details");
+  tbody.innerHTML = "";
+  details.innerHTML = "";
+  title.textContent = `Most rated ${input}`;
   for (i = 0; i < artisanList.length; i++) {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
@@ -1517,9 +1520,28 @@ function findArtisan() {
     <td>${artisanList[i].name}</td>
     <td>${artisanList[i].city}</td>
     <td>${artisanList[i].rating}</td>
-    <td><a href='#detail' class='btn btn-primary ids'>...<input type="hidden" value="7"></a></td>
+    <td>${artisanList[i].duration}</td>
   `;
     tbody.appendChild(newRow);
+
+    const newDiv = document.createElement("div");
+    newDiv.className = "col-lg-4 col-md-6";
+    newDiv.setAttribute("data-aos", "fade-up");
+    newDiv.setAttribute("data-aos-delay", "100");
+
+    newDiv.innerHTML = `
+    <div class="service-item  position-relative">
+      <h3>${artisanList[i].name}</h3>
+      <p>city: ${artisanList[i].city}</p>
+      <p>email: ${artisanList[i].email}</p>
+      <p>local govt: ${artisanList[i].lga}</p>
+      <p>services: ${artisanList[i].services}</p>
+      <p>state: ${artisanList[i].state}</p>
+      <p>work: ${artisanList[i].work}</p>
+      <a class="btn btn-dark mt-2">Message</a>
+    </div>
+    `;
+    details.appendChild(newDiv);
   }
 }
 
