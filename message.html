@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with artisan</title>
+
+    <link href="assets/img/logo2.png" rel="icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="assets/css/message.css">
+    <!-- <link href="assets/css/main.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <header id="header" class="header">
+
+        <a href="index.html" class="logo d-flex align-items-center">
+            <!-- <h1 class="sitename">Skill Hub</h1> <span>.</span> -->
+            <img src="assets/img/logo2.png" alt="">
+        </a>
+
+    </header>
+    <div class="container">
+        <div>
+            <ul class="chat-thread">
+            </ul>
+
+            <form class="chat-window">
+                <input class="chat-window-message" name="chat-window-message" type="text" autocomplete="off"
+                    autofocus />
+                <i class="bi bi-send send-icon" onclick="submitForm(event);"></i>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="assets/js/message.js"></script>
+</body>
+
+</html>

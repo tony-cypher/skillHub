@@ -1538,7 +1538,7 @@ function findArtisan() {
       <p>services: ${artisanList[i].services}</p>
       <p>state: ${artisanList[i].state}</p>
       <p>work: ${artisanList[i].work}</p>
-      <a class="btn btn-dark mt-2">Message</a>
+      <a href="message.html" class="btn btn-dark mt-2">Message</a>
     </div>
     `;
     details.appendChild(newDiv);
