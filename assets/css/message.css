@@ -42,9 +42,9 @@ Chat
   left: 50%; */
   margin: 30px;
   /* transform: translate(-50%, -50%); */
-  width: 500px;
+  width: 300px;
   height: 80vh;
-  max-height: 500px;
+  max-height: 650px;
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
@@ -75,7 +75,8 @@ Chat Title
   margin: 0;
   padding: 0;
 }
-.chat-title h2 {
+.chat-title h2,
+.chat-title a {
   color: rgba(255, 255, 255, 0.5);
   font-size: 8px;
   letter-spacing: 1px;
