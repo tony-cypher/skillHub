@@ -1,140 +1,97 @@
-var sendChannel,
-  receiveChannel,
-  chatWindow = document.querySelector(".chat-window"),
-  chatWindowMessage = document.querySelector(".chat-window-message"),
-  chatThread = document.querySelector(".chat-thread");
+var $messages = $(".messages-content"),
+  d,
+  h,
+  m,
+  i = 0;
 
-// Create WebRTC connection
-createConnection();
+$(window).on("load", function () {
+  $messages.mCustomScrollbar();
+  setTimeout(function () {
+    fakeMessage();
+  }, 100);
+});
 
-// On form submit, send message
-chatWindow.onsubmit = submitForm;
-
-function submitForm(e) {
-  e.preventDefault();
-
-  sendData();
-
-  return false;
+function updateScrollbar() {
+  $messages.mCustomScrollbar("update").mCustomScrollbar("scrollTo", "bottom", {
+    scrollInertia: 10,
+    timeout: 0,
+  });
 }
 
-function createConnection() {
-  var servers = null;
-
-  if (window.mozRTCPeerConnection) {
-    window.localPeerConnection = new mozRTCPeerConnection(servers, {
-      optional: [
-        {
-          RtpDataChannels: true,
-        },
-      ],
-    });
-  } else {
-    window.localPeerConnection = new webkitRTCPeerConnection(servers, {
-      optional: [
-        {
-          RtpDataChannels: true,
-        },
-      ],
-    });
-  }
-
-  try {
-    // Reliable Data Channels not yet supported in Chrome
-    sendChannel = localPeerConnection.createDataChannel("sendDataChannel", {
-      reliable: false,
-    });
-  } catch (e) {}
-
-  localPeerConnection.onicecandidate = gotLocalCandidate;
-  sendChannel.onopen = handleSendChannelStateChange;
-  sendChannel.onclose = handleSendChannelStateChange;
-
-  if (window.mozRTCPeerConnection) {
-    window.remotePeerConnection = new mozRTCPeerConnection(servers, {
-      optional: [
-        {
-          RtpDataChannels: true,
-        },
-      ],
-    });
-  } else {
-    window.remotePeerConnection = new webkitRTCPeerConnection(servers, {
-      optional: [
-        {
-          RtpDataChannels: true,
-        },
-      ],
-    });
-  }
-
-  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
-  remotePeerConnection.ondatachannel = gotReceiveChannel;
-
-  // Firefox seems to require an error callback
-  localPeerConnection.createOffer(gotLocalDescription, function (err) {});
-}
-
-function sendData() {
-  sendChannel.send(chatWindowMessage.value);
-}
-
-function gotLocalDescription(desc) {
-  localPeerConnection.setLocalDescription(desc);
-  remotePeerConnection.setRemoteDescription(desc);
-  // Firefox seems to require an error callback
-  remotePeerConnection.createAnswer(gotRemoteDescription, function (err) {});
-}
-
-function gotRemoteDescription(desc) {
-  remotePeerConnection.setLocalDescription(desc);
-  localPeerConnection.setRemoteDescription(desc);
-}
-
-function gotLocalCandidate(event) {
-  if (event.candidate) {
-    remotePeerConnection.addIceCandidate(event.candidate);
+function setDate() {
+  d = new Date();
+  if (m != d.getMinutes()) {
+    m = d.getMinutes();
+    $('<div class="timestamp">' + d.getHours() + ":" + m + "</div>").appendTo(
+      $(".message:last")
+    );
   }
 }
 
-function gotRemoteIceCandidate(event) {
-  if (event.candidate) {
-    localPeerConnection.addIceCandidate(event.candidate);
+function insertMessage() {
+  msg = $(".message-input").val();
+  if ($.trim(msg) == "") {
+    return false;
   }
+  $('<div class="message message-personal">' + msg + "</div>")
+    .appendTo($(".mCSB_container"))
+    .addClass("new");
+  setDate();
+  $(".message-input").val(null);
+  updateScrollbar();
+  setTimeout(function () {
+    fakeMessage();
+  }, 1000 + Math.random() * 20 * 100);
 }
 
-function gotReceiveChannel(event) {
-  receiveChannel = event.channel;
-  receiveChannel.onmessage = handleMessage;
-  receiveChannel.onopen = handleReceiveChannelStateChange;
-  receiveChannel.onclose = handleReceiveChannelStateChange;
-}
+$(".message-submit").click(function () {
+  insertMessage();
+});
 
-function handleMessage(event) {
-  var chatNewThread = document.createElement("li"),
-    chatNewMessage = document.createTextNode(event.data);
-
-  // Add message to chat thread and scroll to bottom
-  chatNewThread.appendChild(chatNewMessage);
-  chatThread.appendChild(chatNewThread);
-  chatThread.scrollTop = chatThread.scrollHeight;
-
-  // Clear text value
-  chatWindowMessage.value = "";
-}
-
-function handleSendChannelStateChange() {
-  var readyState = sendChannel.readyState;
-
-  if (readyState == "open") {
-    chatWindowMessage.disabled = false;
-    chatWindowMessage.focus();
-    chatWindowMessage.placeholder = "";
-  } else {
-    chatWindowMessage.disabled = true;
+$(window).on("keydown", function (e) {
+  if (e.which == 13) {
+    insertMessage();
+    return false;
   }
-}
+});
 
-function handleReceiveChannelStateChange() {
-  var readyState = receiveChannel.readyState;
+var Fake = [
+  "Hi there, I'm Emeka and you?",
+  "Nice to meet you",
+  "How are you?",
+  "Not too bad, thanks",
+  "What do you do?",
+  "That's awesome",
+  "I think you're a nice person",
+  "Why do you think that?",
+  "Can you explain?",
+  "Anyway I've gotta go now",
+  "It was a pleasure chat with you",
+  "Time to make a new codepen",
+  "Bye",
+  ":)",
+];
+
+function fakeMessage() {
+  if ($(".message-input").val() != "") {
+    return false;
+  }
+  $(
+    '<div class="message loading new"><figure class="avatar"><img src="https://i.pinimg.com/564x/96/4b/a8/964ba8e85a13a3cc8a69eb4c6e1849ec.jpg" /></figure><span></span></div>'
+  ).appendTo($(".mCSB_container"));
+  updateScrollbar();
+
+  setTimeout(function () {
+    $(".message.loading").remove();
+    $(
+      '<div class="message new"><figure class="avatar"><img src="https://i.pinimg.com/564x/96/4b/a8/964ba8e85a13a3cc8a69eb4c6e1849ec.jpg" /></figure>' +
+        Fake[i] +
+        "</div>"
+    )
+      .appendTo($(".mCSB_container"))
+      .addClass("new");
+    setDate();
+    updateScrollbar();
+    i++;
+  }, 1000 + Math.random() * 20 * 100);
 }
